@@ -1,0 +1,26 @@
+Cut a section of a line by byte using -b option
+Eg. cut -b 2 would get 2nd byte
+
+To separate by characters (that may be separated with commas) use -c
+Characters can sometimes be more that 1 byte, so safer to use -c option
+
+-d is delimiter option , usually used with field (-f) option to specify that field should be cut
+
+The options refer to what you want to be shown, ie the items that are cut, will be shown.
+
+Cut -d ',' -f 1 names.csv
+Would show the first field in each line of names.csv
+The fields have been explained as having "," between each.
+
+Multiple fields to be cut can be specified eg. 1,4 would give the first and fourth field
+
+The --complement option shows the inverse
+Eg cut --complement -c 1 would show all but the first character
+
+Output delimiters convert defined characters
+Cut -d ';' -f 1,3,4 --output-de
+
+Cuts the fields 1 3 and 4, and swaps the ';' to a spaced returns output 
+
+Sort
+-t, -k4 will sort items alphabetically t showing where it starts and k saying where it ends (field 4)
