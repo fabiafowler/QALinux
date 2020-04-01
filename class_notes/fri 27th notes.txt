@@ -1,0 +1,16 @@
+All docker commands are written without as lower case docker
+
+Docker runs on port 80
+Docker run -d --name [name] -p [port] [name of image: release]
+Docker ps  shows running containers
+Docker ps -a shows hidden containers
+Docker exec [name of container] [command] allows you to run commands on container
+
+Docker exec -it(interactive terminal [name of con] bash
+Allows you to run bash from within your container
+
+Docker cp allows you to copy
+
+Stops and removes all containers listed from variable 
+Docker rm(remove) -f(force) $(docker ps(list containers) -q(quiet, no headings)a(include hidden containers))
+

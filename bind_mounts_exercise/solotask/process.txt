@@ -1,0 +1,9 @@
+Touch hello.sh
+Vim hello.sh
+echo hello! >> hello.sh
+
+docker run -d -p 80:80 --volume $(pwd)/hello.sh:/hello.sh nginx
+docker exec -it nginx bash
+chmod +x hello.sh
+./hello.sh
+
