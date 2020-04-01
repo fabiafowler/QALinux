@@ -1,0 +1,56 @@
+q. Webpage volume (how are these different to directory as a place where you want things to be saved??
+Volumes are managed by docker
+Easier to manage, you can share multiple files etc.
+
+Bind mounts
+Most basic way of sharing files between container and host machine
+The two flags you need are the -v and --mount flags, differing on which you prefer and what functionality you need.
+
+-v or --volume
+Takes 3 fields, separated by colons.
+EG. docker run -d -p 80:80 --volume $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro nginx
+
+
+Field 1 : provide file or directory on the host, full path. You can use function commands like $(pwd) here. If file doesn't exist, docker will create it and give it only root access.
+
+Field 2: Where the file will be mounted in the container. You can replace files with this file.
+
+Field 3: Options that can be added to the file/directory that is in the container eg. ro read only access to file or rw read and write access.
+These modifiers (-v or --volume only) will modify distributions that work with SELinux(security enhanced linux). 'z' indicates the file/dir will be accessed by more than 1 container, 'Z' indicates that just 1 container will have access.
+
+
+Volumes
+When making a volume you have to specify name and where it will be mounted in container.
+Eg docker run --volume my-volume:/usr/share/nginx/html
+
+The mount flag ,do the same but with source and commas.
+docker run --mount source=my-volume,destination=/usr/share/nginx/html
+
+For Jenkins exercise using volume
+docker volume create jenkins-test
+docker run -d -p 8080:8080 --name jenkins --volume jenkinstest:/var/jenkins_home jenkins
+Docker exec -it Jenkins bash
+>>> cat /var/jenkins_home/secrets/initialAdminPassword
+set up on ip:8080
+Then create job
+You can stop + delete image + container and when running command docker run -d -p 8080:8080 --name jenkins --volume jenkinstest:/var/jenkins_home jenkins you'll still have build job details because it has been stored in volume!
+
+
+
+
+Difference between tcp and ucp??
+
+Docker compose
+Using one configuration file you can define and run multiple docker containers 
+Minimal effort
+You need jq and curl installed https://get.docker.com etc |sudo bash
+
+
+
+
+
+
+
+
+
+
