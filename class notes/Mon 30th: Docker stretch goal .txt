@@ -1,9 +1,0 @@
-Initial docker stretch goal
-
-FROM python.py
-FROM alpine: latest 
-
-RUN source venv/bin/activate
-RUN pip3 install requirements.txt
-
-ENTRYPOINT ["/usr/local/bin/python", "app.py"]
